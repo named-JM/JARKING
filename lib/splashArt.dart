@@ -16,11 +16,13 @@ class SplashArt extends StatelessWidget {
           Expanded(
             child: Lottie.asset('Assets/Opener Loading.json'),
           ),
-          SizedBox(height: 20), // Adjust the height as needed
+          SizedBox(height: 20),
+          // Adjust the height as needed
           Text(
             'JARLING STUDIO',
             style: TextStyle(
-              fontSize: 18,
+              fontFamily: 'Genshin',
+              fontSize: 25,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
