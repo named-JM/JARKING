@@ -1,3 +1,4 @@
+import 'package:final_project_for_flutter_by_jarling/splashArt.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +11,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.brown.shade600,
-      appBar: AppBar(
-        title: Text("WELCOME TO JARLING APPLICATION!"),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashArt(),
     );
   }
 }
