@@ -18,18 +18,24 @@ class SplashArt extends StatelessWidget {
           ),
           SizedBox(height: 20),
           // Adjust the height as needed
-          Text(
-            'JARLING STUDIO',
-            style: TextStyle(
-              fontFamily: 'Genshin',
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+          Image.asset(
+            'Assets/images/jarking.png',
+            width: 150,
+            height: 150,
           ),
+
+          // Text(
+          //   'JARKING STUDIO',
+          //   style: TextStyle(
+          //     fontFamily: 'Genshin',
+          //     fontSize: 20,
+          //     fontWeight: FontWeight.bold,
+          //     color: Colors.black,
+          //   ),
+          // ),
         ],
       ),
-      splashIconSize: 350,
+      splashIconSize: 400,
       backgroundColor: Colors.white,
       pageTransitionType: PageTransitionType.rightToLeftWithFade,
       nextScreen: LoginPage(),
