@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4742624367",
+    "project_id": "jarling-firebase",
+    "storage_bucket": "jarling-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4742624367:android:957669463bc63b5328c99a",
+        "android_client_info": {
+          "package_name": "com.example.final_project_for_flutter_by_jarling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvVqgZDvH2C-A_GLHQ33F9nXbacuJThMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-import 'package:final_project_for_flutter_by_jarling/home.dart';
+
 import 'package:final_project_for_flutter_by_jarling/splashArt.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashArt(),
     );
   }
 }
