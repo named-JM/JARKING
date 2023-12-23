@@ -11,7 +11,7 @@ class MenuPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -20,11 +20,11 @@ class MenuPage extends StatelessWidget {
                       color: Colors.black,
                       size: 36.0,
                     ),
-                    Icon(
-                      Icons.account_circle_rounded,
-                      color: Colors.grey[900],
-                      size: 36.0,
-                    ),
+                    // Icon(
+                    //   Icons.account_circle_rounded,
+                    //   color: Colors.grey[900],
+                    //   size: 36.0,
+                    // ),
                   ],
                 ),
               ),

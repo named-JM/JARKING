@@ -2,6 +2,7 @@ import 'package:final_project_for_flutter_by_jarling/menu.dart';
 import 'package:final_project_for_flutter_by_jarling/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -49,6 +50,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.grey.shade200,
         color: Colors.grey.shade700,
+        height: 60,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 300),
         index: index,
@@ -117,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              //Expanded(child: Lottie.asset('Assets/animation-design.json')),
               SizedBox(
                   height: 20), // Add some space between the text and the button
               Padding(
@@ -144,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+
               SizedBox(height: 500), // Add space for smooth scrolling effect
               // Your "About Us" section goes here
               Padding(
