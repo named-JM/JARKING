@@ -36,26 +36,36 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white,
       ),
       Icon(
-        Icons.person_2_sharp,
+        Icons.settings,
         size: 30,
         color: Colors.white,
       ),
     ];
 
     return Scaffold(
-      //this is to call routes/screens
-      body: screens[index],
-
       backgroundColor: Colors.grey.shade200,
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey.shade200,
-        color: Colors.grey.shade700,
-        height: 60,
-        animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 300),
-        index: index,
-        items: items,
-        onTap: (index) => setState(() => this.index = index),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: screens[index],
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: CurvedNavigationBar(
+              backgroundColor: Colors.grey.shade200,
+              color: Colors.grey.shade700,
+              height: 60,
+              buttonBackgroundColor: Colors.grey.shade700,
+              animationCurve: Curves.easeInOut,
+              animationDuration: Duration(milliseconds: 300),
+              index: index,
+              items: items,
+              onTap: (index) => setState(() => this.index = index),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -99,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                     Icon(
-                      Icons.account_circle_rounded,
+                      Icons.account_circle,
                       color: Colors.grey[900],
                       size: 36.0,
                     ),
@@ -206,31 +216,58 @@ class _HomeScreenState extends State<HomeScreen> {
                           size: 150,
                         ),
                       ),
-                      // Text(
-                      //   'Profile',
-                      //   style: TextStyle(
-                      //     color: Colors.white,
-                      //     fontSize: 24,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 20),
             ListTile(
-              title: Text('Item 1'),
+              title: Text(
+                'Menu',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+              ),
               onTap: () {
                 // Handle the onTap action for the first item in the drawer
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: Text(
+                'Profile',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+              ),
               onTap: () {
                 // Handle the onTap action for the second item in the drawer
               },
             ),
             // Add more ListTiles for additional items in the drawer
+            ListTile(
+              title: Text(
+                'Settings',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+              ),
+              onTap: () {
+                // Handle the onTap action for the second item in the drawer
+              },
+            ),
+            ListTile(
+              title: Text(
+                'About',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+              ),
+              onTap: () {
+                // Handle the onTap action for the second item in the drawer
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Developers',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+              ),
+              onTap: () {
+                // Handle the onTap action for the second item in the drawer
+              },
+            ),
           ],
         ),
       ),

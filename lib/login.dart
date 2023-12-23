@@ -1,6 +1,7 @@
 import 'package:final_project_for_flutter_by_jarling/components/myTextfield.dart';
 import 'package:final_project_for_flutter_by_jarling/components/signInBtn.dart';
 import 'package:final_project_for_flutter_by_jarling/components/squareTile.dart';
+import 'package:final_project_for_flutter_by_jarling/home.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -25,15 +26,16 @@ class LoginPage extends StatelessWidget {
             children: [
               const SizedBox(height: 50),
               //logo
-              const Icon(
-                Icons.lock,
-                size: 100,
+              Image.asset(
+                'Assets/images/jarcrown.png',
+                height: 120,
               ),
-              const SizedBox(height: 20),
+
+              const SizedBox(height: 25),
 
               //welcome text here !!!!
               Text(
-                'Welcome To Jarling Studio! Please Sign in.',
+                'Welcome To Jarking Studio! Please Sign in.',
                 style: TextStyle(color: Colors.grey[700], fontSize: 16),
               ),
 
@@ -79,7 +81,12 @@ class LoginPage extends StatelessWidget {
               //sign in button
               SignInButton(
                 //here to fill outy the on Tab in our signinBtn components
-                onTap: signUserIn,
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
               ),
               const SizedBox(height: 25),
 

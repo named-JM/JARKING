@@ -1,4 +1,5 @@
 import 'package:final_project_for_flutter_by_jarling/home.dart';
+import 'package:final_project_for_flutter_by_jarling/login.dart';
 //import 'package:final_project_for_flutter_by_jarling/login.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -39,7 +40,7 @@ class SplashArt extends StatelessWidget {
       splashIconSize: 400,
       backgroundColor: Colors.white,
       pageTransitionType: PageTransitionType.rightToLeftWithFade,
-      nextScreen: HomePage(),
+      nextScreen: LoginPage(),
     );
   }
 }
