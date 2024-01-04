@@ -1,8 +1,7 @@
-import 'package:final_project_for_flutter_by_jarling/home.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:final_project_for_flutter_by_jarling/login.dart';
 //import 'package:final_project_for_flutter_by_jarling/login.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -21,7 +20,7 @@ class SplashArt extends StatelessWidget {
           SizedBox(height: 20),
           // Adjust the height as needed
           Image.asset(
-            'Assets/images/jarking.png',
+            'Assets/images/icons/jarking.png',
             width: 150,
             height: 150,
           ),

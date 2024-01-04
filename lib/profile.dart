@@ -8,7 +8,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         body: Center(
           child: Text(
-            'orogile pahe',
+            'This is Profile Page',
             style: TextStyle(fontSize: 120),
           ),
         ),

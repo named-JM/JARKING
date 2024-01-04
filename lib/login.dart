@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 50),
               //logo
               Image.asset(
-                'Assets/images/jarcrown.png',
+                'Assets/images/icons/jarcrown.png',
                 height: 120,
               ),
 
@@ -129,11 +129,11 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //google button
-                  SquareTile(imagePath: 'Assets/images/google.png'),
+                  SquareTile(imagePath: 'Assets/images/icons/google.png'),
 
                   const SizedBox(width: 20),
                   //yahoo button
-                  SquareTile(imagePath: 'Assets/images/yahoo.png')
+                  SquareTile(imagePath: 'Assets/images/icons/yahoo.png')
                 ],
               ),
 

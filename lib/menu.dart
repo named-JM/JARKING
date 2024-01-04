@@ -1,7 +1,3 @@
-import 'package:final_project_for_flutter_by_jarling/categories/games/game1.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/game2.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/game3.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/game4.dart';
 import 'package:final_project_for_flutter_by_jarling/menuCategories/appsMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/menuCategories/crudMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/menuCategories/gameMenu.dart';
@@ -14,82 +10,124 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.grey[200],
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: Container(
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //       image: AssetImage(
+          //           "Assets/images/119104210865.png"), // Replace with your image asset path
+          //       fit: BoxFit.cover),
+          // ),
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //add icons or something
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Text(
+                    'Categories',
+                    style:
+                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w800),
+                  ),
+                ),
+                SizedBox(height: 40.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                      size: 36.0,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GamesMenu()));
+                      },
+                      child: RoundedBox(label: 'GAMES'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AppsMenu()));
+                      },
+                      child: RoundedBox(label: 'APPS'),
                     ),
                   ],
                 ),
-              ),
-              Text(
-                'THIS IS MENU PAGE 4 BOX HERE',
-                style: TextStyle(fontSize: 50.0),
-              ),
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => GamesMenu()));
-                    },
-                    child: RoundedBox(),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AppsMenu()));
-                    },
-                    child: RoundedBox(),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CrudMenu()));
-                    },
-                    child: RoundedBox(),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MusicMenu()));
-                    },
-                    child: RoundedBox(),
-                  ),
-                ],
-              ),
-            ],
+                SizedBox(height: 50.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CrudMenu()));
+                      },
+                      child: RoundedBox(label: 'CRUD'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MusicMenu()));
+                      },
+                      child: RoundedBox(label: 'MUSIC'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );
 }
 
 class RoundedBox extends StatelessWidget {
+  final String label;
+
+  const RoundedBox({Key? key, required this.label}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0,
-      height: 100.0,
+      width: 140.0,
+      height: 140.0,
       decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(10.0),
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: [
+            //bottom right shadow is darker
+            BoxShadow(
+              color: Colors.grey.shade500,
+              offset: Offset(5, 5),
+              blurRadius: 20,
+              spreadRadius: 1,
+            ),
+
+            //top left shadow is lighter
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(-10, -7),
+              blurRadius: 10,
+              spreadRadius: 1,
+            ),
+          ]),
+      child: Center(
+        child: Text(
+          label,
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
+        ),
       ),
     );
   }
