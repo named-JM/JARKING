@@ -143,10 +143,10 @@ class _HomePageState extends State<HomePage> {
       //this is to call routes/screens
       body: screens[index],
 
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.grey[200],
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey.shade200,
-        color: Colors.grey.shade800,
+        backgroundColor: Colors.transparent,
+        color: Colors.grey.shade900,
         height: 60,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 300),
@@ -328,6 +328,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
+                  Image.asset(
+                    'Assets/images/img-carousel/1.png', // Replace with the path to your image
+                    fit: BoxFit.cover,
+                    height: 200.0,
+                  ),
+                  Image.asset(
+                    'Assets/images/img-carousel/2.png', // Replace with the path to your image
+                    fit: BoxFit.cover,
+                    height: 200.0,
+                  ),
+                  Image.asset(
+                    'Assets/images/img-carousel/6.png', // Replace with the path to your image
+                    fit: BoxFit.cover,
+                    height: 200.0,
+                  ),
                   // Add more items as needed
                 ],
               ),
@@ -428,7 +443,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Joanna Caguco, Carl Balano, and King Martinez thus the Jarking was made!'
                       '\n\nThis app was made from flutter that contains all the 10 programs.'
                       'Let\'s do our best so that Sir Cooper will grade us perfect.',
-                      style: TextStyle(fontSize: 17.9),
+                      style: TextStyle(
+                          fontSize: 17.9,
+                          fontWeight: FontWeight.w300,
+                          fontStyle: FontStyle.italic),
                     ),
 
                     SizedBox(height: 100)

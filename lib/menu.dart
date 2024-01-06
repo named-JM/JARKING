@@ -10,83 +10,85 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.grey[200],
-        body: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //       image: AssetImage(
-          //           "Assets/images/119104210865.png"), // Replace with your image asset path
-          //       fit: BoxFit.cover),
-          // ),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          child: Container(
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //       image: AssetImage(
+            //           "Assets/images/119104210865.png"), // Replace with your image asset path
+            //       fit: BoxFit.cover),
+            // ),
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //add icons or something
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text(
+                      'Categories',
+                      style: TextStyle(
+                          fontSize: 50.0, fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                  SizedBox(height: 40.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      //add icons or something
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GamesMenu()));
+                        },
+                        child: RoundedBox(label: 'GAMES'),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AppsMenu()));
+                        },
+                        child: RoundedBox(label: 'APPS'),
+                      ),
                     ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Text(
-                    'Categories',
-                    style:
-                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w800),
+                  SizedBox(height: 50.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CrudMenu()));
+                        },
+                        child: RoundedBox(label: 'CRUD'),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MusicMenu()));
+                        },
+                        child: RoundedBox(label: 'MUSIC'),
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(height: 40.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => GamesMenu()));
-                      },
-                      child: RoundedBox(label: 'GAMES'),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AppsMenu()));
-                      },
-                      child: RoundedBox(label: 'APPS'),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 50.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CrudMenu()));
-                      },
-                      child: RoundedBox(label: 'CRUD'),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MusicMenu()));
-                      },
-                      child: RoundedBox(label: 'MUSIC'),
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

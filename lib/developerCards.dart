@@ -84,7 +84,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.all(10.0),
+                  //padding: const EdgeInsets.all(.0),
                   child: Row(
                     children: [
                       IconButton(
@@ -181,7 +181,7 @@ class DeveloperCardItem extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 200),
+              const SizedBox(height: 210),
               Text(
                 developer.name,
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
@@ -193,9 +193,9 @@ class DeveloperCardItem extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.w500),
               ),
-              SizedBox(
-                  height:
-                      10), // Adjust the space between role and additional details
+              // SizedBox(
+              //     height:
+              //         10), // Adjust the space between role and additional details
               // Text(
               //   "${developer.age} Years old",
               //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),

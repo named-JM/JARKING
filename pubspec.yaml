@@ -41,6 +41,10 @@ dependencies:
   firebase_core: ^2.24.2
   card_swiper: ^3.0.1
   carousel_slider: ^4.2.1
+  animated_background: ^2.0.0
+  english_words: ^4.0.0
+  audioplayers: ^5.2.1
+
   
 
 
@@ -74,6 +78,10 @@ flutter:
     - Assets/images/blobs/
     - Assets/images/icons/
     - Assets/images/profile-img/
+    - Assets/images/RPS-img/
+    - Assets/images/ColorGame-img/
+    - Assets/images/Dices/
+    
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
