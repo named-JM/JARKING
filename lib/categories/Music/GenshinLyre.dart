@@ -62,6 +62,7 @@ class RectanglesGrid extends StatelessWidget {
     );
   }
 
+//when it comes to problem in assets but the pubspec is good and directories is good. it is much cause of that mfker audio bundle file. find that assets/sounds/
   void playSound(int soundNumber) {
     final player = new AudioPlayer();
     player.play(AssetSource('doremi$soundNumber.mp3'));
