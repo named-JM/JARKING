@@ -25,7 +25,9 @@ class GenshinLyre extends StatelessWidget {
         return true;
       },
       child: Scaffold(
+        backgroundColor: Colors.grey[200],
         appBar: AppBar(
+          backgroundColor: Colors.grey,
           title: Text('21 Rectangles Grid'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -50,8 +52,8 @@ class GenshinLyre extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 7,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
+                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 20.0,
                 ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -62,11 +64,25 @@ class GenshinLyre extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      width: 70.0,
-                      height: 70.0,
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(50.0),
+                          boxShadow: [
+                            //bottom right shadow is darker
+                            BoxShadow(
+                              color: Colors.grey.shade500,
+                              offset: Offset(5, 5),
+                              blurRadius: 20,
+                              spreadRadius: 1,
+                            ),
+
+                            //top left shadow is lighter
+                            BoxShadow(
+                              color: Colors.white,
+                              offset: Offset(-5, -5),
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                            ),
+                          ]),
                     ),
                   );
                 },
