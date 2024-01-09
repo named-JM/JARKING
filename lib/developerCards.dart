@@ -12,7 +12,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
   final List<Developer> developers = [
     Developer(
       'Joanna Caguco',
-      'Project Manager/UI Designer',
+      'Project Manager/UI Designer/Developer',
       'Assets/images/profile-img/joanna_image.jpg',
       //age: 20,
       education: '3rd Year Computer Science Major',
@@ -30,7 +30,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
     ),
     Developer(
       'Carl Balano',
-      'Mobile App Developer',
+      'Game Developer/Lead Programmer',
       'Assets/images/profile-img/carl_image.jpg',
       //age: 21,
       education: '3rd Year Computer Science Major',
@@ -69,7 +69,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: Colors.grey.shade200,
       body: SafeArea(
         child: Stack(
           children: [
@@ -90,7 +90,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
                       IconButton(
                         icon: Icon(
                           Icons.arrow_back,
-                          color: Colors.grey.shade200,
+                          color: Colors.black,
                         ),
                         onPressed: () {
                           Navigator.of(context).pop(); // Add navigation logic
@@ -106,6 +106,17 @@ class _DeveloperCardState extends State<DeveloperCard> {
                       //   ),
                       // ),
                     ],
+                  ),
+                ),
+                SizedBox(height: 25),
+                Container(
+                  margin: EdgeInsets.only(left: 25),
+                  child: Text(
+                    "Meet our team!",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.w800),
                   ),
                 ),
                 SizedBox(height: 40),
@@ -145,7 +156,6 @@ class Developer {
     this.name,
     this.role,
     this.image, {
-    // this.age = 0,
     required this.education,
     required this.skills,
   });
@@ -159,63 +169,73 @@ class DeveloperCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            height: 240,
-            width: double.infinity,
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-              child: Image.asset(
-                developer.image,
-                fit: BoxFit.cover,
-              ),
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(45.0),
+        boxShadow: [
+          //bottom right shadow is darker
+          BoxShadow(
+            color: Colors.grey.shade800,
+            offset: Offset(5, 8),
+            blurRadius: 5,
+            //spreadRadius: 0,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 210),
-              Text(
-                developer.name,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
-              ),
-              Text(
-                developer.role,
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
-              ),
-              // SizedBox(
-              //     height:
-              //         10), // Adjust the space between role and additional details
-              // Text(
-              //   "${developer.age} Years old",
-              //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              // ),
-              Text(
-                developer.education,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                  height: 30), // Adjust the space between education and skills
-              Wrap(
-                spacing: 5.0, // Adjust the spacing between skills
-                runSpacing: 1.0,
-                children: developer.skills
-                    .map((skill) => Chip(label: Text(skill)))
-                    .toList(),
-              ),
-            ],
+
+          //top left shadow is lighter
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-5, -5),
+            blurRadius: 10,
+            spreadRadius: 1,
           ),
         ],
+      ),
+      child: Card(
+        color: Colors.grey[200],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 50),
+                CircleAvatar(
+                  radius: 80,
+                  backgroundImage: AssetImage(developer.image),
+                ),
+                const SizedBox(height: 35),
+                Text(
+                  developer.name,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+                ),
+                Text(
+                  developer.role,
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  developer.education,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 30),
+                Wrap(
+                  spacing: 5.0,
+                  runSpacing: 0.0,
+                  children: developer.skills
+                      .map((skill) => Chip(
+                            label: Text(skill),
+                          ))
+                      .toList(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
