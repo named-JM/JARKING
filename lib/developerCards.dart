@@ -12,7 +12,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
   final List<Developer> developers = [
     Developer(
       'Joanna Caguco',
-      'Project Manager/UI Designer/Developer',
+      'Project Manager & UI/UX Designer',
       'Assets/images/profile-img/joanna_image.jpg',
       //age: 20,
       education: '3rd Year Computer Science Major',
@@ -25,12 +25,11 @@ class _DeveloperCardState extends State<DeveloperCard> {
         'Excel',
         'Bootstrap',
         'Photoshop',
-        'Figma'
       ],
     ),
     Developer(
       'Carl Balano',
-      'Game Developer/Lead Programmer',
+      'Game Developer & Lead Programmer',
       'Assets/images/profile-img/carl_image.jpg',
       //age: 21,
       education: '3rd Year Computer Science Major',
@@ -48,7 +47,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
     ),
     Developer(
       'King Martinez',
-      'App Developer',
+      'IT Assistant',
       'Assets/images/profile-img/king_image.jpg',
       //age: 25,
       education: '3rd Year Computer Science Major',
@@ -96,15 +95,6 @@ class _DeveloperCardState extends State<DeveloperCard> {
                           Navigator.of(context).pop(); // Add navigation logic
                         },
                       ),
-                      SizedBox(width: 20),
-                      // Text(
-                      //   'Meet our Team!',
-                      //   style: TextStyle(
-                      //     fontSize: 35,
-                      //     color: Colors.grey,
-                      //     fontWeight: FontWeight.w900,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -129,7 +119,12 @@ class _DeveloperCardState extends State<DeveloperCard> {
                     viewportFraction: 0.8,
                     scale: 0.9,
                     pagination: SwiperPagination(),
-                    control: SwiperControl(),
+                    control: SwiperControl(
+                      color: Colors.black,
+                      iconNext: Icons
+                          .arrow_forward_ios, // Change the right arrow icon
+                      iconPrevious: Icons.arrow_back_ios,
+                    ),
                   ),
                 ),
                 Container(
@@ -171,12 +166,12 @@ class DeveloperCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(45.0),
+        borderRadius: BorderRadius.circular(30.0),
         boxShadow: [
           //bottom right shadow is darker
           BoxShadow(
-            color: Colors.grey.shade800,
-            offset: Offset(5, 8),
+            color: Colors.grey.shade600,
+            offset: Offset(5, 5),
             blurRadius: 5,
             //spreadRadius: 0,
           ),
