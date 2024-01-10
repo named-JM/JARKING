@@ -136,7 +136,8 @@ class _ColorGambleGameState extends State<ColorGambleGame> {
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w900)),
                     style: ElevatedButton.styleFrom(
-                        primary: canProceed ? Colors.white : Colors.grey,
+                        backgroundColor:
+                            canProceed ? Colors.white : Colors.grey,
                         padding:
                             EdgeInsets.symmetric(vertical: 16, horizontal: 24)),
                   ),
@@ -166,7 +167,8 @@ class _ColorGambleGameState extends State<ColorGambleGame> {
                               color: Colors.black, fontWeight: FontWeight.w900),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: canProceed ? Colors.white : Colors.grey,
+                            backgroundColor:
+                                canProceed ? Colors.white : Colors.grey,
                             padding: EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 24)),
                       ),
