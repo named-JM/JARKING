@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:final_project_for_flutter_by_jarling/login.dart';
+import 'package:final_project_for_flutter_by_jarling/User_Auth/login.dart';
 //import 'package:final_project_for_flutter_by_jarling/login.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

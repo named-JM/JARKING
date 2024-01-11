@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   WidgetsFlutterBinding
       .ensureInitialized(); // Ensure Flutter binding is initialized
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.grey[900],
     statusBarColor: Colors.transparent,
   ));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   // SystemChrome.setEnabledSystemUIMode(
   //   SystemUiMode.manual,
   //   overlays: [SystemUiOverlay.bottom],
