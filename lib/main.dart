@@ -1,8 +1,13 @@
+import 'package:final_project_for_flutter_by_jarling/firebase_options.dart';
 import 'package:final_project_for_flutter_by_jarling/splashArt.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   WidgetsFlutterBinding
       .ensureInitialized(); // Ensure Flutter binding is initialized
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
