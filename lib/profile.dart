@@ -1,4 +1,5 @@
-import 'package:final_project_for_flutter_by_jarling/Settings.dart';
+import 'package:final_project_for_flutter_by_jarling/User_Auth/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -25,110 +26,145 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 160,
-              height: 160,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade500,
-                    offset: Offset(5, 5),
-                    blurRadius: 20,
-                    spreadRadius: 1,
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-5, -5),
-                    blurRadius: 10,
-                    spreadRadius: 1,
-                  ),
-                ],
-              ),
-              child: Icon(
-                Icons.person,
-                size: 80,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
+      body: Stack(
+        children: [
+          Positioned(
+              top: 16,
+              right: 16,
+              child: GestureDetector(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      (route) => false);
+                },
+                child: Icon(
+                  Icons.login_outlined,
+                  size: 35,
+                ),
+              )),
+          Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      guestName,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                Container(
+                  width: 160,
+                  height: 160,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: Offset(5, 5),
+                        blurRadius: 20,
+                        spreadRadius: 1,
                       ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, -5),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.person,
+                    size: 80,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          guestName,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: () {
+                        _showNameInputDialog();
+                      },
+                      child: Icon(Icons.edit, color: Colors.black, size: 20),
                     ),
                   ],
                 ),
-                SizedBox(width: 8),
-                GestureDetector(
-                  onTap: () {
-                    _showNameInputDialog();
-                  },
-                  child: Icon(Icons.edit, color: Colors.black, size: 20),
+                SizedBox(height: 10),
+                Text(
+                  '',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
                 ),
+                SizedBox(height: 20),
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => SettingsPage()),
+                //     );
+                //   },
+                // child: Container(
+                //   padding: EdgeInsets.all(10),
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(8),
+                //     boxShadow: [
+                //       BoxShadow(
+                //         color: Colors.grey.shade500,
+                //         offset: Offset(5, 5),
+                //         blurRadius: 20,
+                //         spreadRadius: 1,
+                //       ),
+                //       BoxShadow(
+                //         color: Colors.white,
+                //         offset: Offset(-5, -5),
+                //         blurRadius: 10,
+                //         spreadRadius: 1,
+                //       ),
+                //     ],
+                //   ),
+                // child: Row(
+                //   mainAxisSize: MainAxisSize.min,
+                //   children: [
+                //     Icon(Icons.settings, color: Colors.black),
+                //     SizedBox(width: 8),
+                //     Text('Settings', style: TextStyle(color: Colors.black)),
+                //   ],
+                // ),
+                //   ),
+                // ),
               ],
             ),
-            SizedBox(height: 10),
-            Text(
-              '',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-              },
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: Offset(5, 5),
-                      blurRadius: 20,
-                      spreadRadius: 1,
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-5, -5),
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.settings, color: Colors.black),
-                    SizedBox(width: 8),
-                    Text('Settings', style: TextStyle(color: Colors.black)),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+          // GestureDetector(
+          //   child: Positioned(
+          //       top: 16,
+          //       right: 16,
+          //       child: IconButton(
+          //         icon: Icon(Icons.exit_to_app),
+          //         iconSize: 30,
+          //         onPressed: () {
+          //           Navigator.pushAndRemoveUntil(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => LoginPage()),
+          //               (route) => false);
+          //         },
+          //       )),
+          // )
+        ],
       ),
     );
   }
