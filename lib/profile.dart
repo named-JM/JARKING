@@ -33,11 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
               right: 16,
               child: GestureDetector(
                 onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                      (route) => false);
+                  _showLogoutConfirmationDialog();
                 },
                 child: Icon(
                   Icons.login_outlined,
@@ -166,6 +162,36 @@ class _ProfilePageState extends State<ProfilePage> {
           // )
         ],
       ),
+    );
+  }
+
+  void _showLogoutConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Are you sure you want to log out?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (route) => false,
+                );
+              },
+              child: Text('Log Out'),
+            ),
+          ],
+        );
+      },
     );
   }
 

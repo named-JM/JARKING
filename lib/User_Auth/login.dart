@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _signIn() async {
     //this will add if we type in that testfield it will add into the firebase
-    //String username = _usernameController.text;
+
     String email = _emailController.text;
     String password = _passwordController.text;
 
@@ -128,10 +128,27 @@ class _LoginPageState extends State<LoginPage> {
 
     if (user != null) {
       print("User is succesfuly Signed In!");
+      _showSnackBar("Login Succesfulll");
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomePage()));
-    } else {
-      print("Some error happened");
     }
+    // if (user == null || password == '') {
+    //   _showSnackBar("Please fill up the form.");
+    //}
+    else {
+      print("Some error happened");
+      _showSnackBar("Login failed. Please check your credentials");
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: Colors.grey[200],
+      content: Text(
+        message,
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+      ),
+      duration: Duration(seconds: 3),
+    ));
   }
 }
