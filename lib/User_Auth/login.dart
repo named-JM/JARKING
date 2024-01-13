@@ -1,6 +1,7 @@
 import 'package:final_project_for_flutter_by_jarling/User_Auth/firebase_auth_services.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/form_container_widget.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/signup.dart';
+import 'package:final_project_for_flutter_by_jarling/global/common/toast.dart';
 import 'package:final_project_for_flutter_by_jarling/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 25),
                 Text(
                   "Login",
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.w800),
                 ),
                 SizedBox(
                   height: 30,
@@ -127,28 +128,13 @@ class _LoginPageState extends State<LoginPage> {
     User? user = await _auth.signInWithEmailAndPassword(email, password);
 
     if (user != null) {
-      print("User is succesfuly Signed In!");
-      _showSnackBar("Login Succesfulll");
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+      showToast(message: "User is successfully signed in");
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+          (route) => false);
+    } else {
+      showToast(message: "some error occured");
     }
-    // if (user == null || password == '') {
-    //   _showSnackBar("Please fill up the form.");
-    //}
-    else {
-      print("Some error happened");
-      _showSnackBar("Login failed. Please check your credentials");
-    }
-  }
-
-  void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: Colors.grey[200],
-      content: Text(
-        message,
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
-      ),
-      duration: Duration(seconds: 3),
-    ));
   }
 }

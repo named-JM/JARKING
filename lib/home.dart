@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:final_project_for_flutter_by_jarling/developerCards.dart';
 import 'package:final_project_for_flutter_by_jarling/menu.dart';
+import 'package:final_project_for_flutter_by_jarling/menuCategories/gameMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -44,102 +45,6 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black,
-      //   // shadowColor: const Color.fromARGB(255, 255, 255, 255),
-      //   iconTheme: IconThemeData(color: Colors.black),
-      // ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     children: [
-      //       DrawerHeader(
-      //         decoration: BoxDecoration(
-      //           color: Colors.grey.shade700,
-      //         ),
-      //         child: Text(
-      //           'Drawer Header',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 24,
-      //           ),
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'Menu',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 0; // Set the selected index to the MenuPage
-      //           });
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'Home',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 1; // Set the selected index to the HomeScreen
-      //           });
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'Profile',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 2; // Set the selected index to the ProfilePage
-      //           });
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'Settings',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 2; // Set the selected index to the ProfilePage
-      //           });
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'About',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 2; // Set the selected index to the ProfilePage
-      //           });
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: Text(
-      //           'Developers',
-      //           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      //         ),
-      //         onTap: () {
-      //           Navigator.pop(context); // Close the drawer
-      //           setState(() {
-      //             index = 2; // Set the selected index to the ProfilePage
-      //           });
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
-
       //this is to call routes/screens
       body: screens[index],
 
@@ -179,16 +84,22 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 110,
+                height: 100,
+                width: 150, // Adjust the height as needed
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('Assets/images/blobs/119104210865.png'),
-                    fit: BoxFit.none,
+                    image: AssetImage(
+                        'Assets/images/blobs/tray_large.png'), // Replace with your image path
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
+
               Stack(
                 children: [
+                  // Background image container
+
+                  //TEXT WELCOME
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -338,10 +249,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
-                  Image.asset(
-                    'Assets/images/img-carousel/6.png', // Replace with the path to your image
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => GamesMenu()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/6.png', // Replace with the path to your image
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
                   // Add more items as needed
                 ],

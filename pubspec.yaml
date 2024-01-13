@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   firebase_auth: ^4.16.0
   firebase_storage: ^11.6.0
+  fluttertoast: ^8.2.4
 
   
 
@@ -84,6 +85,7 @@ flutter:
     - Assets/images/RPS-img/
     - Assets/images/ColorGame-img/
     - Assets/images/Dices/
+    - Assets/images/chords/
     
   
 

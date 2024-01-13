@@ -1,6 +1,7 @@
 import 'package:final_project_for_flutter_by_jarling/User_Auth/firebase_auth_services.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/form_container_widget.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/login.dart';
+import 'package:final_project_for_flutter_by_jarling/global/common/toast.dart';
 import 'package:final_project_for_flutter_by_jarling/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -139,11 +140,13 @@ class _SignupPageState extends State<SignupPage> {
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
     if (user != null) {
-      print("user is succesfuly created");
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+      showToast(message: "User is successfully created");
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+          (route) => false);
     } else {
-      print("Some error happened");
+      showToast(message: "Some error happend");
     }
   }
 }

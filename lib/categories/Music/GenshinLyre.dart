@@ -6,7 +6,26 @@ void main() {
   runApp(GenshinLyre());
 }
 
-class GenshinLyre extends StatelessWidget {
+class GenshinLyre extends StatefulWidget {
+  @override
+  _GenshinLyreState createState() => _GenshinLyreState();
+}
+
+class _GenshinLyreState extends State<GenshinLyre> {
+  // List of chord image paths
+  final List<String> chordImages = [
+    'Assets/images/chords/do.png',
+    'Assets/images/chords/re.png',
+    'Assets/images/chords/mi.png',
+    'Assets/images/chords/fa.png',
+    'Assets/images/chords/sol.png',
+    'Assets/images/chords/la.png',
+    'Assets/images/chords/ti.png',
+  ];
+
+  // List to track the state of each circle's color
+  List<Color> circleColors = List.generate(21, (index) => Colors.grey.shade300);
+
   @override
   Widget build(BuildContext context) {
     // Ensure landscape orientation when navigating to this page
@@ -61,28 +80,53 @@ class GenshinLyre extends StatelessWidget {
                       // Play sound based on the index
                       playSound(index +
                           1); // Index is 0-based, add 1 to match your requirement
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(50.0),
-                          boxShadow: [
-                            //bottom right shadow is darker
-                            BoxShadow(
-                              color: Colors.grey.shade500,
-                              offset: Offset(5, 5),
-                              blurRadius: 20,
-                              spreadRadius: 1,
-                            ),
 
-                            //top left shadow is lighter
-                            BoxShadow(
-                              color: Colors.white,
-                              offset: Offset(-5, -5),
-                              blurRadius: 10,
-                              spreadRadius: 1,
-                            ),
-                          ]),
+                      // Update the color of the clicked circle
+                      setState(() {
+                        circleColors[index] = Colors
+                            .grey.shade100; // Change this to the desired color
+                      });
+
+                      // Reset the color after a brief delay (you can adjust the duration as needed)
+                      Future.delayed(Duration(milliseconds: 500), () {
+                        setState(() {
+                          circleColors[index] = Colors.grey.shade300;
+                        });
+                      });
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: circleColors[index],
+                            borderRadius: BorderRadius.circular(50.0),
+                            boxShadow: [
+                              // Bottom right shadow is darker
+                              BoxShadow(
+                                color: Colors.grey.shade500,
+                                offset: Offset(5, 5),
+                                blurRadius: 20,
+                                spreadRadius: 1,
+                              ),
+                              // Top left shadow is lighter
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-5, -5),
+                                blurRadius: 10,
+                                spreadRadius: 1,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Image.asset(
+                          chordImages[index %
+                              chordImages
+                                  .length], // Use modulo to repeat images if there are fewer than 21
+                          width: 40.0,
+                          height: 40.0,
+                        ),
+                      ],
                     ),
                   );
                 },
