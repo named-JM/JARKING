@@ -21,11 +21,7 @@ Welcome Screen, Bottom Nav Bar, and Home Menu Screen that will display the 10 pr
 10. ??
 
 
-A few resources to get you started if this is your first Flutter project:
+#LOGIN/SIGN UP FEATURES WITH FIREBASE AUTHENTICATION (no google authy planning to do it)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1705235400](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/81b1baf4-6b46-4058-9747-290f35b28c37)
+![Screenshot_1705235397](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/baeec479-33ce-4784-9131-6ebbf196a49d)
