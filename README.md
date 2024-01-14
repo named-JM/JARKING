@@ -12,13 +12,13 @@ Welcome Screen, Bottom Nav Bar, and Home Menu Screen that will display the 10 pr
 1. Random Name Generator
 2. Business Cards and details (3 Students who made this app will display)
 3. Xylophone 
-4. Flutter Game
+4. Color game
 5. Jack en Poi game
 6. Rolling Dice Game
-7. Slot Machine
-8. (Spin the wheel)
-9. Form Details (Simple Crud, after entering form details it will display at the end. create/read or display/update/delete)
-10. BMI Calculator/ Calculator
+7. ??
+8. ??
+9. 1 Crud App (work in progress)
+10. ??
 
 
 A few resources to get you started if this is your first Flutter project:
