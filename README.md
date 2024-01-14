@@ -1,6 +1,7 @@
 # FLUTTER FINAL PROJECT 10 PROGRAMS IN ONE APPLICATION
+![Blue and Orange Modern Minimalist We're Open Poster (Landscape)](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/bc78235e-1f2f-4e30-aaca-ef0621981c43)
 
-![jarking](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/e20f0552-91bb-4e22-a182-7ebaa8d170e6)
+
 Hello, We are JARLING! Group of 3 named JARLING which is from our name Joanna, Carl, and King.
 This is the final flutter project which we will create 10 programs (maybe games) and will compile it to one application. 
 
