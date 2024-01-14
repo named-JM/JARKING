@@ -22,6 +22,11 @@ Welcome Screen, Bottom Nav Bar, and Home Menu Screen that will display the 10 pr
 
 
 #LOGIN/SIGN UP FEATURES WITH FIREBASE AUTHENTICATION (no google authy planning to do it)
+![1](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/5e94e887-e939-461d-b0eb-3cdf0e98a9c0)
 
-![Screenshot_1705235400](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/81b1baf4-6b46-4058-9747-290f35b28c37)
-![Screenshot_1705235397](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/baeec479-33ce-4784-9131-6ebbf196a49d)
+
+#WELCOME SCREEN / CATEGORIES / PROFILE SCREEN LOGOUT
+
+
+![2](https://github.com/named-JM/JARLING_final_practical_exam/assets/123151583/81906bd5-ea5b-4086-930f-d5bacc33a857)
+
