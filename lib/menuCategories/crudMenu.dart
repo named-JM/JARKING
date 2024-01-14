@@ -1,4 +1,4 @@
-import 'package:final_project_for_flutter_by_jarling/categories/CRUD/HT.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/CRUD/crud.dart';
 import 'package:flutter/material.dart';
 
 class CrudMenu extends StatelessWidget {
@@ -45,14 +45,12 @@ class CrudMenu extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HabitTrack()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Crud()));
                     },
                     child: Center(
                         child: RoundedBox(
-                      label: 'HABIT TRACKER',
+                      label: 'CONTACT LIST',
                     )),
                   ),
                 ],
