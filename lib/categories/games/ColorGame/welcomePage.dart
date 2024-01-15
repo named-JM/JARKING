@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'colorGambleGame.dart';
@@ -13,6 +14,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<Color?> backgroundAnimation;
+
+  late AudioPlayer player; // Declare AudioPlayer instance
 
   @override
   void initState() {
@@ -33,6 +36,10 @@ class WelcomeScreenState extends State<WelcomeScreen>
     controller.repeat(
         reverse:
             true); // Reversing the animation to smoothly transition back and forth
+    // Initialize AudioPlayer and load the audio fileS
+    player = new AudioPlayer(); // Initialize the class variable
+    player.play(AssetSource('panic.mp3'));
+    // Start playing the background music when the screen is loaded
 
     // Uncomment the line below if you want to start the animation immediately when the screen is loaded
     controller.forward();
@@ -41,6 +48,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
   @override
   void dispose() {
     controller.dispose();
+    player.dispose(); // Dispose of the AudioPlayer instance
     super.dispose();
   }
 
@@ -85,6 +93,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   ),
                   InkWell(
                     onTap: () {
+                      player.stop(); // Stop the audio playback
                       Navigator.of(context).pop();
                     },
                     child: Image.asset(

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class RPSGame extends StatefulWidget {
   @override
-  _RPSGameState createState() => _RPSGameState();
+  _RPSHomePageState createState() => _RPSHomePageState();
 }
 
-class _RPSGameState extends State<RPSGame> {
+class _RPSHomePageState extends State<RPSGame> {
   final List<String> choices = ['Rock', 'Paper', 'Scissors'];
   String userChoice = '';
   String appChoice = '';
@@ -82,10 +82,14 @@ class _RPSGameState extends State<RPSGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.grey[800],
         title: Text('Rock Paper Scissors'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Column(
@@ -111,7 +115,7 @@ class _RPSGameState extends State<RPSGame> {
                   children: [
                     appChoice.isNotEmpty ? getImage(appChoice) : Container(),
                     SizedBox(height: 10),
-                    getScoreWidget(appScore, 'Computer'),
+                    getScoreWidget(appScore, 'App'),
                   ],
                 ),
               ],
@@ -126,44 +130,11 @@ class _RPSGameState extends State<RPSGame> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: choices
                   .map(
-                    (choice) => GestureDetector(
-                      onTap: () {
+                    (choice) => ElevatedButton(
+                      onPressed: () {
                         playGame(choice);
                       },
-                      child: Container(
-                        width: 80, // Set the width as needed
-                        height: 40, // Set the height as needed
-                        decoration: BoxDecoration(
-                            color: Colors.grey[200], // Set the background color
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              //bottom right shadow is darker
-                              BoxShadow(
-                                color: Colors.grey.shade500,
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                spreadRadius: 1,
-                              ),
-
-                              //top left shadow is lighter
-                              BoxShadow(
-                                color: Colors.white,
-                                offset: Offset(-4, -4),
-                                blurRadius: 10,
-                                spreadRadius: 1,
-                              ),
-                            ] // Set border radius as needed
-                            ),
-                        child: Center(
-                          child: Text(
-                            choice,
-                            style: TextStyle(
-                              color: Colors.black, // Set the text color
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
+                      child: Text(choice),
                     ),
                   )
                   .toList(),
