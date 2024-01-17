@@ -50,7 +50,7 @@ class CrudMenu extends StatelessWidget {
                     },
                     child: Center(
                         child: RoundedBox(
-                      label: 'CONTACT LIST',
+                      label: 'ALBUMS',
                     )),
                   ),
                 ],

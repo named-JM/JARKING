@@ -5,7 +5,10 @@ final TextEditingController nameController = TextEditingController();
 final TextEditingController imgController = TextEditingController();
 final TextEditingController personController = TextEditingController();
 
-void createBottomSheet(BuildContext context) {
+void updateBottomSheet(BuildContext context, name, id, img, person) {
+  nameController.text = name;
+  imgController.text = img;
+  personController.text = person;
   showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -32,7 +35,7 @@ void createBottomSheet(BuildContext context) {
               children: [
                 const Center(
                   child: Text(
-                    "ADD YOUR ALBUM OF THE DAY!",
+                    "Edit your Content",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -43,22 +46,22 @@ void createBottomSheet(BuildContext context) {
                   controller: nameController,
                   decoration: const InputDecoration(
                     labelText: "Title",
-                    hintText: "ex: LMAO Girl LMFAO",
+                    hintText: "ex: Laughing her ass off/etc",
                   ),
                 ),
                 TextField(
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.number,
                   controller: imgController,
                   decoration: const InputDecoration(
-                    labelText: "Image URL",
-                    hintText: "Enter image URL",
+                    labelText: "Image",
+                    hintText: "Enter Image URL",
                   ),
                 ),
                 TextField(
                   controller: personController,
                   decoration: const InputDecoration(
                     labelText: "By",
-                    hintText: "ex: Nicki Minaj/Spongebob",
+                    hintText: "ex: Nicki Minaj/Spongebob/Squidward",
                   ),
                 ),
                 const SizedBox(
@@ -66,21 +69,16 @@ void createBottomSheet(BuildContext context) {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      final id = DateTime.now().microsecond.toString();
-                      databaseReference.child(id).set({
+                      databaseReference.child(id).update({
                         'name': nameController.text.toString(),
                         'img': imgController.text.toString(),
                         'person': personController.text.toString(),
-                        'id': id //It's give the unique id every time.
                       });
-                      // For clear the controller
-                      nameController.clear();
-                      imgController.clear();
-                      personController.clear();
+
                       //For Dismiss the keyboard afte adding items
                       Navigator.pop(context);
                     },
-                    child: const Text("add"))
+                    child: const Text("Update"))
               ],
             ),
           ),
