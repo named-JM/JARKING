@@ -65,25 +65,61 @@ void createBottomSheet(BuildContext context) {
                   height: 20,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      final id = DateTime.now().microsecond.toString();
+                  onPressed: () async {
+                    final id = DateTime.now().microsecond.toString();
+
+                    // Validate the image URL
+                    if (!isValidImageUrl(imgController.text.toString())) {
+                      // If invalid, show a Snackbar
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: Invalid image URL'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                      return; // Stop further execution
+                    }
+
+                    // Attempt to add the data to the database
+                    try {
                       databaseReference.child(id).set({
                         'name': nameController.text.toString(),
                         'img': imgController.text.toString(),
                         'person': personController.text.toString(),
-                        'id': id //It's give the unique id every time.
+                        'id': id,
                       });
+
                       // For clear the controller
                       nameController.clear();
                       imgController.clear();
                       personController.clear();
-                      //For Dismiss the keyboard afte adding items
+                      // For Dismiss the keyboard after adding items
                       Navigator.pop(context);
-                    },
-                    child: const Text("add"))
+                    } catch (error) {
+                      // If another error occurs, show a Snackbar
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: $error'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text("add"),
+                ),
               ],
             ),
           ),
         );
       });
+}
+
+bool isValidImageUrl(String url) {
+  // Use a simple regular expression to check if the URL is in a valid format
+  RegExp regExp = RegExp(
+    r'^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$',
+    caseSensitive: false,
+    multiLine: false,
+  );
+  return regExp.hasMatch(url);
 }

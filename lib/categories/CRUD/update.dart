@@ -50,7 +50,7 @@ void updateBottomSheet(BuildContext context, name, id, img, person) {
                   ),
                 ),
                 TextField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.url,
                   controller: imgController,
                   decoration: const InputDecoration(
                     labelText: "Image",
