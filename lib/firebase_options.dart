@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '964272040303',
     projectId: 'jarking-firebase',
     authDomain: 'jarking-firebase.firebaseapp.com',
+    databaseURL: 'https://jarking-firebase-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'jarking-firebase.appspot.com',
   );
 
@@ -57,6 +58,7 @@ class DefaultFirebaseOptions {
     appId: '1:964272040303:android:3ab79cb6490f10d68da09a',
     messagingSenderId: '964272040303',
     projectId: 'jarking-firebase',
+    databaseURL: 'https://jarking-firebase-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'jarking-firebase.appspot.com',
   );
 
@@ -65,6 +67,7 @@ class DefaultFirebaseOptions {
     appId: '1:964272040303:ios:fea2c044e2d3a3708da09a',
     messagingSenderId: '964272040303',
     projectId: 'jarking-firebase',
+    databaseURL: 'https://jarking-firebase-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'jarking-firebase.appspot.com',
     iosBundleId: 'com.example.finalProjectForFlutterByJarling',
   );
@@ -74,6 +77,7 @@ class DefaultFirebaseOptions {
     appId: '1:964272040303:ios:761b8b320984442f8da09a',
     messagingSenderId: '964272040303',
     projectId: 'jarking-firebase',
+    databaseURL: 'https://jarking-firebase-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'jarking-firebase.appspot.com',
     iosBundleId: 'com.example.finalProjectForFlutterByJarling.RunnerTests',
   );
