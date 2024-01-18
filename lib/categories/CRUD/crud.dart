@@ -52,7 +52,9 @@ class _CrudState extends State<Crud> {
                     child: InkWell(
                       onTap: () {
                         _showFullImageDialog(
-                            context, snapshot.child("img").value.toString());
+                            // this function is to make the image doesnt have uneccesray background
+                            context,
+                            snapshot.child("img").value.toString());
                       },
                       child: Container(
                         width: 55,
@@ -60,30 +62,29 @@ class _CrudState extends State<Crud> {
                         child: Stack(
                           children: [
                             // Image.network with loading indicator controlled manually
-                            Image.network(
-                              snapshot.child("img").value.toString(),
-                              fit: BoxFit.cover,
-                              loadingBuilder: (BuildContext context,
-                                  Widget child,
-                                  ImageChunkEvent? loadingProgress) {
-                                if (loadingProgress == null) {
-                                  // Image is fully loaded, hide the loading indicator
-                                  return child;
-                                } else {
-                                  // Image is still loading, show the loading indicator
-                                  return Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                              },
+                            Container(
+                              width: double.infinity,
+                              height: double.infinity,
+                              child: Image.network(
+                                snapshot.child("img").value.toString(),
+                                fit: BoxFit.cover,
+                                loadingBuilder: (BuildContext context,
+                                    Widget child,
+                                    ImageChunkEvent? loadingProgress) {
+                                  if (loadingProgress == null) {
+                                    // Image is fully loaded, hide the loading indicator
+                                    return child;
+                                  } else {
+                                    // Image is still loading, show the loading indicator
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                },
+                              ),
                             ),
                           ],
                         ),
-                        //no loading indicator will display below coude
-                        // child: Image.network(
-                        //   snapshot.child("img").value.toString(),
-                        //   fit: BoxFit.cover,
-                        // ),
                       ),
                     ),
                   ),
