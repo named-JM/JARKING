@@ -12,26 +12,24 @@ class _DeveloperCardState extends State<DeveloperCard> {
   final List<Developer> developers = [
     Developer(
       'Joanna Caguco',
-      'Project Manager & UI/UX Designer',
+      'Project Manager & UI Designer\nApplication Developer',
       'Assets/images/profile-img/joanna_image.jpg',
-      //age: 20,
       education: '3rd Year Computer Science Major',
       skills: [
         'Flutter',
         'Java',
-        'HTML',
-        'CSS',
-        'JS',
+        'HTML/CSS/Bootstrap',
+        'Firebase',
+        'SQL',
+        'Github',
         'Excel',
-        'Bootstrap',
         'Photoshop',
       ],
     ),
     Developer(
       'Carl Balano',
-      'Game Developer & Lead Programmer',
+      'Game Application Developer',
       'Assets/images/profile-img/carl_image.jpg',
-      //age: 21,
       education: '3rd Year Computer Science Major',
       skills: [
         'Flutter',
@@ -72,13 +70,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
       body: SafeArea(
         child: Stack(
           children: [
-            // Background Image
-            // Image.asset(
-            //   'Assets/images/blobs/4907578.jpg',
-            //   width: double.infinity,
-            //   height: double.infinity,
-            //   fit: BoxFit.cover,
-            // ),
+            //optional here if u wanted to have bg image or smthng.
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -128,8 +120,9 @@ class _DeveloperCardState extends State<DeveloperCard> {
                   ),
                 ),
                 Container(
-                  height: 100.0, // Adjust the height of the space at the bottom
-                ),
+                    height:
+                        100.0 // Adjust the height of the space at the bottom
+                    ),
               ],
             ),
           ],
@@ -194,9 +187,8 @@ class DeveloperCardItem extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
                 CircleAvatar(
                   radius: 80,
                   backgroundImage: AssetImage(developer.image),
@@ -208,6 +200,7 @@ class DeveloperCardItem extends StatelessWidget {
                 ),
                 Text(
                   developer.role,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -216,16 +209,20 @@ class DeveloperCardItem extends StatelessWidget {
                 Text(
                   developer.education,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30),
-                Wrap(
-                  spacing: 5.0,
-                  runSpacing: 0.0,
-                  children: developer.skills
-                      .map((skill) => Chip(
-                            label: Text(skill),
-                          ))
-                      .toList(),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Wrap(
+                    spacing: 2.0,
+                    runSpacing: 0.0,
+                    children: developer.skills
+                        .map((skill) => Chip(
+                              label: Text(skill),
+                            ))
+                        .toList(),
+                  ),
                 ),
               ],
             ),

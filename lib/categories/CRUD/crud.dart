@@ -51,14 +51,14 @@ class _CrudState extends State<Crud> {
                     tag: heroTag,
                     child: InkWell(
                       onTap: () {
-                        _showFullImageDialog(context,
-                            snapshot.child("img")?.value?.toString() ?? "");
+                        _showFullImageDialog(
+                            context, snapshot.child("img").value.toString());
                       },
                       child: Container(
                         width: 55,
                         height: 55,
                         child: Image.network(
-                          snapshot.child("img")?.value?.toString() ?? "",
+                          snapshot.child("img").value.toString(),
                           fit: BoxFit.cover,
                         ),
                       ),
