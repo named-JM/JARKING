@@ -57,10 +57,32 @@ class _CrudState extends State<Crud> {
                       child: Container(
                         width: 55,
                         height: 55,
-                        child: Image.network(
-                          snapshot.child("img").value.toString(),
-                          fit: BoxFit.cover,
+                        child: Stack(
+                          children: [
+                            // Image.network with loading indicator controlled manually
+                            Image.network(
+                              snapshot.child("img").value.toString(),
+                              fit: BoxFit.cover,
+                              loadingBuilder: (BuildContext context,
+                                  Widget child,
+                                  ImageChunkEvent? loadingProgress) {
+                                if (loadingProgress == null) {
+                                  // Image is fully loaded, hide the loading indicator
+                                  return child;
+                                } else {
+                                  // Image is still loading, show the loading indicator
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                              },
+                            ),
+                          ],
                         ),
+                        // child: Image.network(
+                        //   snapshot.child("img").value.toString(),
+                        //   fit: BoxFit.cover,
+                        // ),
                       ),
                     ),
                   ),

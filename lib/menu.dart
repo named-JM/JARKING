@@ -15,7 +15,7 @@ class MenuPage extends StatelessWidget {
             // decoration: BoxDecoration(
             //   image: DecorationImage(
             //       image: AssetImage(
-            //           "Assets/images/119104210865.png"), // Replace with your image asset path
+            //           "Assets/images/119104210865.png"),
             //       fit: BoxFit.cover),
             // ),
             child: SafeArea(
