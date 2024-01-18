@@ -14,17 +14,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int index = 1;
+  int index = 1; // STARTS AT THE CENTER OR WHAT INDEX WILL GO DEFAULT!
   @override
   Widget build(BuildContext context) {
-    //since the list items are in array we need it for our routes screens
+    //ITEM ROUTES FOR THE NAVIGATION BAR
     final screens = [
       MenuPage(),
       HomeScreen(),
       ProfilePage(),
     ];
 
-    //create items that split to list items
+    //ITEMS FOR THE BOTTOM NAVIGATION BAR
 
     final items = <Widget>[
       Icon(
@@ -45,9 +45,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      //this is to call routes/screens
-      body: screens[index],
-
+      body: screens[index], //TO CALL SCREEN OR ROUTE BY THE INDEX
       backgroundColor: Colors.grey[200],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
@@ -62,6 +60,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// ==--> HOME SCREEN DISPLAY HERE!!! <---==
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -84,12 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 100,
-                width: 150, // Adjust the height as needed
+                height: 80,
+                width: 70,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                        'Assets/images/blobs/tray_large.png'), // Replace with your image path
+                    image: AssetImage('Assets/images/icons/jarcrown.png'),
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -102,12 +101,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   //TEXT WELCOME
                   Container(
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 16.0), // Adjust the left padding as needed
+                      padding: const EdgeInsets.only(left: 16.0),
                       child: Text(
                         'Welcome\nTo The\nJarking Studio.',
                         style: TextStyle(
-                          fontSize: 50.0, // Adjust the font size as needed
+                          fontSize: 50.0,
                           fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),
@@ -116,11 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 20),
 
-              //Expanded(child: Lottie.asset('Assets/animation-design.json')),
-              SizedBox(
-                  height: 20), // Add some space between the text and the button
-
+              //CHECK OUT GROUP FUNCTION AUTO SCROLL DOWN!!
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: InkWell(
@@ -132,9 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       curve: Curves.easeInOut,
                     );
                   },
+                  //Neumorph designing
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200], // Change the color as needed
+                      color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(10.0),
                       boxShadow: [
                         BoxShadow(
@@ -143,8 +140,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           blurRadius: 20,
                           spreadRadius: 1,
                         ),
-
-                        //top left shadow is lighter
                         BoxShadow(
                           color: Colors.white,
                           offset: Offset(-10, -7),
@@ -162,9 +157,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 50),
+              //THIS IS THE PART OF SEE MORE WORKS IN OUR CATEGORIES
               Center(
                 child: Stack(
                   children: [
@@ -210,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // Add Carousel Slider
+              //CAROUSEL SLIDER PART HERE!!!
               CarouselSlider(
                 options: CarouselOptions(
                   height: 200.0,
@@ -225,27 +219,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 items: [
                   Image.asset(
-                    'Assets/images/img-carousel/4.png', // Replace with the path to your image
+                    'Assets/images/img-carousel/4.png',
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
                   Image.asset(
-                    'Assets/images/img-carousel/3.png', // Replace with the path to your image
+                    'Assets/images/img-carousel/3.png',
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
                   Image.asset(
-                    'Assets/images/img-carousel/5.png', // Replace with the path to your image
+                    'Assets/images/img-carousel/5.png',
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
                   Image.asset(
-                    'Assets/images/img-carousel/1.png', // Replace with the path to your image
+                    'Assets/images/img-carousel/1.png',
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
                   Image.asset(
-                    'Assets/images/img-carousel/2.png', // Replace with the path to your image
+                    'Assets/images/img-carousel/2.png',
                     fit: BoxFit.cover,
                     height: 200.0,
                   ),
@@ -255,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(builder: (context) => GamesMenu()));
                     },
                     child: Image.asset(
-                      'Assets/images/img-carousel/6.png', // Replace with the path to your image
+                      'Assets/images/img-carousel/6.png',
                       fit: BoxFit.cover,
                       height: 200.0,
                     ),
@@ -264,19 +258,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
 
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
+              //PERSONS IMAGE DISPLAY DESIGN
               Container(
                 height: 300,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                        'Assets/images/icons/3143372.png'), // Replace with your image path
+                    image: AssetImage('Assets/images/icons/3143372.png'),
                     fit: BoxFit.fitHeight,
                   ),
                 ),
               ),
+              //PART WHERE GOING TO THE DEVELOPER CARDS!!!
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -335,12 +328,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
 
-              // Add space for smooth scrolling effect
-              // Your "About Us" section goes here
+              // ABOUT US SECTION HERE!!!!
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
