@@ -56,7 +56,7 @@ class _CrudState extends State<Crud> {
                       },
                       child: Container(
                         width: 55,
-                        height: 55,
+                        height: 50,
                         child: Stack(
                           children: [
                             // Image.network with loading indicator controlled manually
@@ -79,6 +79,7 @@ class _CrudState extends State<Crud> {
                             ),
                           ],
                         ),
+                        //no loading indicator will display below coude
                         // child: Image.network(
                         //   snapshot.child("img").value.toString(),
                         //   fit: BoxFit.cover,
