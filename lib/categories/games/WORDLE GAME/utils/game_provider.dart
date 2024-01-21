@@ -1,82 +1,14 @@
 import 'dart:math';
 
+import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/utils/list_words.dart';
+
 class WordleGame {
   //setting the game variables
   int rowId = 0;
   int letterId = 0;
   static String game_message = "";
   static String game_guess = "";
-  static List<String> word_list = [
-    "about",
-    "apple",
-    "array",
-    "beach",
-    "bread",
-    "brain",
-    "build",
-    "built",
-    "bitch",
-    "chair",
-    "class",
-    "click",
-    "corny",
-    "crime",
-    "crown",
-    "daddy",
-    "dance",
-    "death",
-    "deads",
-    "doors",
-    "earth",
-    "fight",
-    "fries",
-    "grape",
-    "gravy",
-    "guess",
-    "happy",
-    "honey",
-    "horny",
-    "laser",
-    "leave",
-    "magic",
-    "melon",
-    "noble",
-    "night",
-    "plane",
-    "plain",
-    "proud",
-    "pussy",
-    "quick",
-    "rider",
-    "river",
-    "rival",
-    "robot",
-    "shape",
-    "share",
-    "seven",
-    "serve",
-    "smile",
-    "story",
-    "tiger",
-    "table",
-    "three",
-    "train",
-    "valid",
-    "video",
-    "voice",
-    "vital",
-    "waste",
-    "wheel",
-    "whale",
-    "whole",
-    "woman",
-    "world",
-    "wound",
-    "write",
-    "wrote",
-    "yield",
-    "zebra"
-  ];
+  static List<String> word_list = WordList.word_list;
   static bool gameOver = false;
   //setting the game row
   static List<Letter> wordleRow = List.generate(
