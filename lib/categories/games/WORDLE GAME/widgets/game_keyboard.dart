@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/utils/game_provider.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/widgets/game_board.dart';
 import 'package:flutter/material.dart';
@@ -18,18 +20,20 @@ class _GameKeyboardState extends State<GameKeyboard> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //MESSAGE HIDDEN/SHOW UP BELOW AT THE WORDLE TITLE
         Text(
           WordleGame.game_message,
           style: TextStyle(color: Colors.white),
         ),
-        SizedBox(
-          height: 20.0,
-        ),
+        SizedBox(height: 20.0),
         GameBoard(widget.game),
         SizedBox(
           height: 40.0,
         ),
+
+        //---->CALLING ROW SECTION<------
         Row(
+          // ROW 1
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: row1.map((e) {
             return InkWell(
@@ -59,9 +63,8 @@ class _GameKeyboardState extends State<GameKeyboard> {
             );
           }).toList(),
         ),
-        SizedBox(
-          height: 10.0,
-        ),
+        SizedBox(height: 10.0),
+        //ROW 2 <------------
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: row2.map((e) {
@@ -92,16 +95,15 @@ class _GameKeyboardState extends State<GameKeyboard> {
             );
           }).toList(),
         ),
-        SizedBox(
-          height: 10.0,
-        ),
+        SizedBox(height: 10.0),
+        //ROW 3 <----------------
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: row3.map((e) {
             return InkWell(
               onTap: () {
                 print(e);
-
+                //HERE DELETER BUTTON LOGICSD HERE <---
                 if (e == "DEL") {
                   if (widget.game.letterId > 0) {
                     setState(() {
@@ -110,6 +112,7 @@ class _GameKeyboardState extends State<GameKeyboard> {
                       widget.game.letterId--;
                     });
                   }
+                  //SUBMIT LOGIC BUTOON HERE!!!!!
                 } else if (e == "SUBMIT") {
                   // setting the game rules
                   if (widget.game.letterId >= 5) {
