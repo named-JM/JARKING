@@ -19,6 +19,14 @@ class FirebaseAuthService {
     return null;
   }
 
+  Future<void> updateUsername(User user, String username) async {
+    try {
+      await user.updateDisplayName(username);
+    } catch (e) {
+      print("Error updating username: $e");
+    }
+  }
+
   Future<User?> signInWithEmailAndPassword(
       String email, String password) async {
     try {

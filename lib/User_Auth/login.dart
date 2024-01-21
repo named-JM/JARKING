@@ -134,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
           MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
     } else {
-      showToast(message: "some error occured");
+      showToast(message: "check your credentials.");
     }
   }
 }

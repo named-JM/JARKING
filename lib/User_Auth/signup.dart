@@ -132,21 +132,24 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   void _signUp() async {
-    //this will add if we type in that testfield it will add into the firebase
-    //String username = _usernameController.text;
+    //this will add if we type in that texstfield it will add into the firebase
+    String username = _usernameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
     if (user != null) {
+      //the username will save for our porfile page
+      await _auth.updateUsername(user, username);
+
       showToast(message: "User is successfully created");
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
     } else {
-      showToast(message: "Some error happend");
+      showToast(message: "Please check your credentials");
     }
   }
 }

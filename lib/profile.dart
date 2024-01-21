@@ -19,8 +19,20 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  TextEditingController _nameController = TextEditingController();
+  // TextEditingController _nameController = TextEditingController();
   String guestName = 'Guest';
+
+  @override
+  void initState() {
+    super.initState();
+    // Retrieve username from the user's profile
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      setState(() {
+        guestName = user.displayName ?? 'Guest';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,79 +99,18 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 8),
-                    GestureDetector(
-                      onTap: () {
-                        _showNameInputDialog();
-                      },
-                      child: Icon(Icons.edit, color: Colors.black, size: 20),
-                    ),
+                    // SizedBox(width: 8),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     _showNameInputDialog();
+                    //   },
+                    //   child: Icon(Icons.edit, color: Colors.black, size: 20),
+                    // ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text(
-                  '',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                  ),
-                ),
-                SizedBox(height: 20),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(builder: (context) => SettingsPage()),
-                //     );
-                //   },
-                // child: Container(
-                //   padding: EdgeInsets.all(10),
-                //   decoration: BoxDecoration(
-                //     color: Colors.white,
-                //     borderRadius: BorderRadius.circular(8),
-                //     boxShadow: [
-                //       BoxShadow(
-                //         color: Colors.grey.shade500,
-                //         offset: Offset(5, 5),
-                //         blurRadius: 20,
-                //         spreadRadius: 1,
-                //       ),
-                //       BoxShadow(
-                //         color: Colors.white,
-                //         offset: Offset(-5, -5),
-                //         blurRadius: 10,
-                //         spreadRadius: 1,
-                //       ),
-                //     ],
-                //   ),
-                // child: Row(
-                //   mainAxisSize: MainAxisSize.min,
-                //   children: [
-                //     Icon(Icons.settings, color: Colors.black),
-                //     SizedBox(width: 8),
-                //     Text('Settings', style: TextStyle(color: Colors.black)),
-                //   ],
-                // ),
-                //   ),
-                // ),
               ],
             ),
           ),
-          // GestureDetector(
-          //   child: Positioned(
-          //       top: 16,
-          //       right: 16,
-          //       child: IconButton(
-          //         icon: Icon(Icons.exit_to_app),
-          //         iconSize: 30,
-          //         onPressed: () {
-          //           Navigator.pushAndRemoveUntil(
-          //               context,
-          //               MaterialPageRoute(builder: (context) => LoginPage()),
-          //               (route) => false);
-          //         },
-          //       )),
-          // )
         ],
       ),
     );
@@ -195,75 +146,75 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _showNameInputDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Edit Name'),
-          content: TextField(
-            controller: _nameController,
-            decoration: InputDecoration(hintText: 'Enter your name'),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  guestName = _nameController.text.isNotEmpty
-                      ? _nameController.text
-                      : 'Guest';
-                });
-                Navigator.pop(context);
-              },
-              child: Text('Save'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Cancel'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void _showNameInputDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         title: Text('Edit Name'),
+  //         content: TextField(
+  //           controller: _nameController,
+  //           decoration: InputDecoration(hintText: 'Enter your name'),
+  //         ),
+  //         actions: [
+  //           TextButton(
+  //             onPressed: () {
+  //               setState(() {
+  //                 guestName = _nameController.text.isNotEmpty
+  //                     ? _nameController.text
+  //                     : 'Guest';
+  //               });
+  //               Navigator.pop(context);
+  //             },
+  //             child: Text('Save'),
+  //           ),
+  //           TextButton(
+  //             onPressed: () {
+  //               Navigator.pop(context);
+  //             },
+  //             child: Text('Cancel'),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 }
 
-class EditNamePage extends StatefulWidget {
-  @override
-  _EditNamePageState createState() => _EditNamePageState();
-}
+// class EditNamePage extends StatefulWidget {
+//   @override
+//   _EditNamePageState createState() => _EditNamePageState();
+// }
 
-class _EditNamePageState extends State<EditNamePage> {
-  TextEditingController _nameController = TextEditingController();
+// class _EditNamePageState extends State<EditNamePage> {
+//   TextEditingController _nameController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Name'),
-        backgroundColor: Colors.black,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: 'Enter your name'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context, _nameController.text);
-              },
-              child: Text('Save'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Edit Name'),
+//         backgroundColor: Colors.black,
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             TextField(
+//               controller: _nameController,
+//               decoration: InputDecoration(labelText: 'Enter your name'),
+//             ),
+//             SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.pop(context, _nameController.text);
+//               },
+//               child: Text('Save'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

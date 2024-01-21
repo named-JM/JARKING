@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/utils/game_provider.dart';
 import 'package:flutter/material.dart';
 
