@@ -73,7 +73,7 @@ class _GenshinLyreState extends State<GenshinLyre> {
               Center(
                 child: Text(
                   "GENSHIN LYRE SIMULATION",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w900),
                 ),
               ),
               Expanded(
