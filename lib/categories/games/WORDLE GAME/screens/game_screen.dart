@@ -27,12 +27,26 @@ class _GameScreenState extends State<GameScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    size: 35,
+                    color: Colors.white,
+                  ))
+            ],
+          ),
           Text(
-            "Wordle",
+            "WORDLE",
             style: TextStyle(
               color: Colors.white,
               fontSize: 36,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w900,
             ),
           ),
           SizedBox(
