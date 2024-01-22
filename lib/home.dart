@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:final_project_for_flutter_by_jarling/developerCards.dart';
+import 'package:final_project_for_flutter_by_jarling/global/common/developerbutton.dart';
 import 'package:final_project_for_flutter_by_jarling/menu.dart';
 import 'package:final_project_for_flutter_by_jarling/menuCategories/gameMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/profile.dart';
@@ -71,7 +72,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isButtonPressed = false;
   final ScrollController _scrollController = ScrollController();
+  void buttonPressed() {
+    setState(() {
+      if (isButtonPressed == false) {
+        isButtonPressed = true;
+
+        // Set isButtonPressed to false after a delay of 300 milliseconds
+        Future.delayed(Duration(milliseconds: 300), () {
+          setState(() {
+            isButtonPressed = false;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DeveloperCard()),
+            );
+          });
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              //CAROUSEL SLIDER PART HERE!!!
+              //-----> CAROUSEL SLIDER PART HERE!!! <---------
               CarouselSlider(
                 options: CarouselOptions(
                   height: 200.0,
@@ -269,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              //PART WHERE GOING TO THE DEVELOPER CARDS!!!
+              // ----> PART WHERE GOING TO THE DEVELOPER CARDS!!!
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -288,40 +308,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => DeveloperCard()),
                         );
                       },
+                      // -------> BUTTON OF DEVELOPER CARD
                       child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade400,
-                              offset: Offset(5, 5),
-                              blurRadius: 20,
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Colors.white,
-                              offset: Offset(-10, -7),
-                              blurRadius: 10,
-                              spreadRadius: 1,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 20),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '',
-                              style: TextStyle(fontSize: 18.0),
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              size: 24,
-                            ),
-                          ],
-                        ),
+                        child: MeetourTeamButton(
+                            onTap: buttonPressed,
+                            isButtonPressed: isButtonPressed),
                       ),
                     ),
                   ],

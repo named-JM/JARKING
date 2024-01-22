@@ -90,7 +90,7 @@ flutter:
     - Assets/images/ColorGame-img/
     - Assets/images/Dices/
     - Assets/images/chords/
-    
+    - Assets/images/welcome-screens/
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

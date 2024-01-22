@@ -163,7 +163,7 @@ class DeveloperCardItem extends StatelessWidget {
         boxShadow: [
           //bottom right shadow is darker
           BoxShadow(
-            color: Colors.grey.shade600,
+            color: Colors.grey.shade500,
             offset: Offset(5, 5),
             blurRadius: 5,
             //spreadRadius: 0,

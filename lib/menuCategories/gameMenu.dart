@@ -1,7 +1,7 @@
 import 'package:final_project_for_flutter_by_jarling/categories/games/ColorGame/welcomePage.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/Dice.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/JacknPoi.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/screens/game_screen.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/dice.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/rps.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/wordle.dart';
 import 'package:flutter/material.dart';
 
 class GamesMenu extends StatelessWidget {
@@ -50,8 +50,10 @@ class GamesMenu extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => RPSGame()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WelcomeRPS()));
                       },
                       child: Center(
                           child: RoundedBox(
@@ -63,7 +65,7 @@ class GamesMenu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DiceGame()));
+                                builder: (context) => WelcomeDice()));
                       },
                       child: RoundedBox(label: 'DICE GAME'),
                     ),
@@ -78,7 +80,7 @@ class GamesMenu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => GameScreen()));
+                                builder: (context) => WelcomeWordle()));
                       },
                       child: Center(child: RoundedBox(label: 'WORDLE')),
                     ),
