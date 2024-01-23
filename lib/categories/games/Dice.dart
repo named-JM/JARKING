@@ -7,49 +7,75 @@ class DiceGame extends StatefulWidget {
   _DiceGameState createState() => _DiceGameState();
 }
 
-class _DiceGameState extends State<DiceGame> {
-  int diceNumber = 1; // Initialize with a default value
-  int userGuess = 1; // Initialize userGuess to prevent null error
-  int score = 20;
-  int winCount = 0;
+class _DiceGameState extends State<DiceGame>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _rotationAnimation;
+  late Animation<double> _scaleAnimation;
+
+  int diceNumber = 1;
+  int userGuess = 1;
+  int selectedDice = 0; // Added variable to track the selected dice number
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration:
+          const Duration(milliseconds: 1000), // Adjust the duration as needed
+    );
+
+    _rotationAnimation = Tween<double>(begin: 0, end: 360).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut, // Use a different curve for smoother motion
+      ),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.8).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut, // Use a different curve for smoother motion
+      ),
+    );
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        setState(() {
+          diceNumber = Random().nextInt(6) + 1;
+        });
+        _animationController.reset();
+        checkWin();
+      }
+    });
+  }
 
   void rollDice() {
-    setState(() {
-      diceNumber =
-          Random().nextInt(6) + 1; // Generates a random number between 1 and 6
-      calculateScore();
-    });
+    if (_animationController.isAnimating) return;
+    _animationController.forward();
   }
 
-  void calculateScore() {
+  void checkWin() {
     if (userGuess == diceNumber) {
-      score += 10; // Award 10 points for an exact match
-      winCount++;
+      showWinDialog();
     } else {
-      score -= 5; // Deduct 1 point for an incorrect guess
-    }
-
-    if (score <= 0) {
-      showGameOverDialog();
-    } else if (winCount >= 5) {
-      showGameWonDialog();
+      showLoseDialog();
     }
   }
 
-  void showGameOverDialog() {
+  void showWinDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Game Over'),
-          content: Text('You lost! Your score is $score.'),
-          actions: [
+          title: Text('WOW!'),
+          content: Text('Amazing! You win!'),
+          actions: <Widget>[
             TextButton(
               onPressed: () {
-                resetGame();
                 Navigator.of(context).pop();
               },
-              child: Text('Restart'),
+              child: Text('OK'),
             ),
           ],
         );
@@ -57,20 +83,19 @@ class _DiceGameState extends State<DiceGame> {
     );
   }
 
-  void showGameWonDialog() {
+  void showLoseDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Congratulations!'),
-          content: Text('You won the game! Your score is $score.'),
-          actions: [
+          title: Text('WRONG!'),
+          content: Text('Sorry you guess it wrong. Try again!'),
+          actions: <Widget>[
             TextButton(
               onPressed: () {
-                resetGame();
                 Navigator.of(context).pop();
               },
-              child: Text('Restart'),
+              child: Text('OK'),
             ),
           ],
         );
@@ -78,44 +103,36 @@ class _DiceGameState extends State<DiceGame> {
     );
   }
 
-  void resetGame() {
-    setState(() {
-      score = 0;
-      winCount = 0;
-      userGuess = 1;
-      diceNumber = 1;
-    });
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        backgroundColor: Colors.grey[800],
-        title: Text('Dice Game'),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: Center(
               child: Text(
                 'Your Guess: $userGuess',
-                style: TextStyle(fontSize: 20.0),
+                style: const TextStyle(fontSize: 30.0),
               ),
             ),
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
+                    children: <Widget>[
                       buildDiceButton(1),
                       buildDiceButton(2),
                       buildDiceButton(3),
@@ -123,7 +140,7 @@ class _DiceGameState extends State<DiceGame> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
+                    children: <Widget>[
                       buildDiceButton(4),
                       buildDiceButton(5),
                       buildDiceButton(6),
@@ -133,73 +150,37 @@ class _DiceGameState extends State<DiceGame> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Center(
             child: Column(
-              children: [
-                Text(
+              children: <Widget>[
+                const Text(
                   'Result:',
                   style: TextStyle(fontSize: 20.0),
                 ),
-                SizedBox(height: 10.0),
-                Image.asset(
-                  'Assets/images/Dices/dice_$diceNumber.png',
-                  width: 100.0,
-                  height: 100.0,
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  'Score: $score',
-                  style: TextStyle(fontSize: 20.0),
+                const SizedBox(height: 10.0),
+                ScaleTransition(
+                  scale: _scaleAnimation,
+                  child: RotationTransition(
+                    turns: _rotationAnimation,
+                    child: Image.asset(
+                      'Assets/images/Dices/dice_${diceNumber.toString()}.png', // Convert diceNumber to string
+                      width: 100.0,
+                      height: 100.0,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 20.0),
-          GestureDetector(
-            onTap: () {
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
               rollDice();
             },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 15),
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                  color: Colors.grey[200], // Set the background color
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    //bottom right shadow is darker
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: Offset(5, 5),
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-
-                    //top left shadow is lighter
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-4, -4),
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-                  ]
-
-                  /// Set border radius as needed
-                  ),
-              child: Center(
-                child: Text(
-                  'Roll the Dice',
-                  style: TextStyle(
-                    color: Colors.black, // Set the text color
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
+            child: const Text('Roll the Dice'),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
         ],
       ),
     );
@@ -210,12 +191,16 @@ class _DiceGameState extends State<DiceGame> {
       onTap: () {
         setState(() {
           userGuess = number;
+          selectedDice = number; // Update the selected dice number
         });
       },
-      child: Image.asset(
-        'Assets/images/Dices/dice_$number.png',
-        width: 80.0,
-        height: 80.0,
+      child: Transform.scale(
+        scale: selectedDice == number ? 0.8 : 1.0, // Shrink effect
+        child: Image.asset(
+          'Assets/images/Dices/dice_$number.png',
+          width: 80.0,
+          height: 80.0,
+        ),
       ),
     );
   }

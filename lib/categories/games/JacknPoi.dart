@@ -7,13 +7,15 @@ class RPSGame extends StatefulWidget {
   _RPSHomePageState createState() => _RPSHomePageState();
 }
 
-class _RPSHomePageState extends State<RPSGame> {
+class _RPSHomePageState extends State<RPSGame>
+    with SingleTickerProviderStateMixin {
   final List<String> choices = ['Rock', 'Paper', 'Scissors'];
   String userChoice = '';
   String appChoice = '';
   String result = '';
   int userScore = 0;
   int appScore = 0;
+  late AnimationController controller;
 
   Map<String, String> imageMap = {
     'Rock': 'Assets/images/RPS-img/rock.png', // Replace with your image paths
@@ -21,33 +23,75 @@ class _RPSHomePageState extends State<RPSGame> {
     'Scissors': 'Assets/images/RPS-img/scissors.png',
   };
 
-  void playGame(String userChoice) {
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  Widget getImage(String choice, bool animate) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        return Transform.translate(
+          offset: Offset(0.0, sin(controller.value * pi) * 20),
+          child: Container(
+            width: 120,
+            height: 120,
+            child: Image.asset(
+              imageMap[choice]!,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void playGame(String userChoice) async {
     setState(() {
       this.userChoice = userChoice;
-      this.appChoice = choices[Random().nextInt(choices.length)];
-
-      if (this.userChoice == this.appChoice) {
-        result = 'It\'s a draw!';
-      } else if ((this.userChoice == 'Rock' && this.appChoice == 'Scissors') ||
-          (this.userChoice == 'Paper' && this.appChoice == 'Rock') ||
-          (this.userChoice == 'Scissors' && this.appChoice == 'Paper')) {
-        result = 'You win!';
-        userScore++;
-      } else {
-        result = 'You lose!';
-        appScore++;
-      }
-
-      if (userScore == 5 || appScore == 5) {
-        if (userScore == 5) {
-          result = 'Congratulations! You won the game!';
-        } else {
-          result = 'Sorry! You lost the game!';
-        }
-        userScore = 0;
-        appScore = 0;
-      }
     });
+
+    controller.forward();
+
+    await Future.delayed(Duration(milliseconds: 500));
+
+    setState(() {
+      this.appChoice = choices[Random().nextInt(choices.length)];
+    });
+
+    if (this.userChoice == this.appChoice) {
+      result = 'It\'s a draw!';
+    } else if ((this.userChoice == 'Rock' && this.appChoice == 'Scissors') ||
+        (this.userChoice == 'Paper' && this.appChoice == 'Rock') ||
+        (this.userChoice == 'Scissors' && this.appChoice == 'Paper')) {
+      result = 'You win!';
+      userScore++;
+    } else {
+      result = 'You lose!';
+      appScore++;
+    }
+
+    if (userScore == 5 || appScore == 5) {
+      if (userScore == 5) {
+        result = 'Congratulations! You won the game!';
+      } else {
+        result = 'Sorry! You lost the game!';
+      }
+      userScore = 0;
+      appScore = 0;
+    }
+
+    controller.reverse();
   }
 
   Widget getScoreWidget(int score, String label) {
@@ -71,25 +115,11 @@ class _RPSHomePageState extends State<RPSGame> {
     );
   }
 
-  Widget getImage(String choice) {
-    return Image.asset(
-      imageMap[choice]!,
-      width: 100,
-      height: 100,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Rock Paper Scissors'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
       body: Center(
         child: Column(
@@ -100,7 +130,9 @@ class _RPSHomePageState extends State<RPSGame> {
               children: <Widget>[
                 Column(
                   children: [
-                    userChoice.isNotEmpty ? getImage(userChoice) : Container(),
+                    userChoice.isNotEmpty
+                        ? getImage(userChoice, true)
+                        : Container(),
                     SizedBox(height: 10),
                     getScoreWidget(userScore, 'You'),
                   ],
@@ -113,7 +145,9 @@ class _RPSHomePageState extends State<RPSGame> {
                 SizedBox(width: 20),
                 Column(
                   children: [
-                    appChoice.isNotEmpty ? getImage(appChoice) : Container(),
+                    appChoice.isNotEmpty
+                        ? getImage(appChoice, true)
+                        : Container(),
                     SizedBox(height: 10),
                     getScoreWidget(appScore, 'App'),
                   ],
