@@ -1,12 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class NewButton extends StatelessWidget {
+class RollButton extends StatelessWidget {
   final onTap;
-  bool isButtonPressed;
-
-  //create constructor for thi s one
-  NewButton({this.onTap, required this.isButtonPressed});
+  bool isRollPressed;
+  RollButton({this.onTap, required this.isRollPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +13,15 @@ class NewButton extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300), //<--- to make it smoother
-        height: 95,
-        width: 300,
+        height: 50,
+        width: 150,
         child: Center(
             child: Text(
-          "PLAY",
+          "ROLL",
           style: TextStyle(
-              fontSize: 60,
+              fontSize: 20,
               fontWeight: FontWeight.w900,
-              color: isButtonPressed ? Colors.grey[600] : Colors.black),
+              color: isRollPressed ? Colors.grey[600] : Colors.black),
         )),
         // child: Icon(
         //   Icons.favorite,
@@ -30,9 +29,9 @@ class NewButton extends StatelessWidget {
         //   color: Colors.red,
         // ),
         decoration: BoxDecoration(
-            color: isButtonPressed ? Colors.white : Colors.grey[200],
+            color: isRollPressed ? Colors.white : Colors.grey[200],
             borderRadius: BorderRadius.circular(12),
-            boxShadow: isButtonPressed
+            boxShadow: isRollPressed
                 ? [
                     //no shadows if button pressed
                   ]

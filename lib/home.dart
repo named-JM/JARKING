@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/ColorGame/welcomePage.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/rps.dart';
 import 'package:final_project_for_flutter_by_jarling/developerCards.dart';
 import 'package:final_project_for_flutter_by_jarling/global/common/developerbutton.dart';
 import 'package:final_project_for_flutter_by_jarling/menu.dart';
+import 'package:final_project_for_flutter_by_jarling/menuCategories/appsMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/menuCategories/gameMenu.dart';
+import 'package:final_project_for_flutter_by_jarling/menuCategories/musicMenu.dart';
 import 'package:final_project_for_flutter_by_jarling/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -238,31 +242,66 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                 ),
                 items: [
-                  Image.asset(
-                    'Assets/images/img-carousel/4.png',
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WelcomeScreen()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/4.png',
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
-                  Image.asset(
-                    'Assets/images/img-carousel/3.png',
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => GamesMenu()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/3.png',
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
-                  Image.asset(
-                    'Assets/images/img-carousel/5.png',
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WelcomeRPS()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/5.png',
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
-                  Image.asset(
-                    'Assets/images/img-carousel/1.png',
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MusicMenu()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/1.png',
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
-                  Image.asset(
-                    'Assets/images/img-carousel/2.png',
-                    fit: BoxFit.cover,
-                    height: 200.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AppsMenu()));
+                    },
+                    child: Image.asset(
+                      'Assets/images/img-carousel/2.png',
+                      fit: BoxFit.cover,
+                      height: 200.0,
+                    ),
                   ),
+
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,

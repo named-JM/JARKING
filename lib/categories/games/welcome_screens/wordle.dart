@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/WORDLE%20GAME/screens/game_screen.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/exit_button.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/game_info/wordle_info.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/new_button.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class _WelcomeWordleState extends State<WelcomeWordle> {
   void exitbuttonPressed() {
     setState(() {
       player = AudioPlayer();
-      player.play(AssetSource('tap.mp3'));
+      player.play(AssetSource('pop.mp3'));
 
       if (isExitButtonPressed == false) {
         isExitButtonPressed = true;
@@ -58,6 +59,31 @@ class _WelcomeWordleState extends State<WelcomeWordle> {
         });
       }
     });
+  }
+
+  // Function to show the game information dialog
+  void showGameInfoDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          insetPadding: EdgeInsets.all(30),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child:
+              WordleInfo(), // You can replace this with the content of your game information
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    player.dispose(); // Dispose of the AudioPlayer instance
+    super.dispose();
   }
 
   @override
@@ -87,7 +113,21 @@ class _WelcomeWordleState extends State<WelcomeWordle> {
               left: 10,
               child: ExitButton(
                   onTap: exitbuttonPressed,
-                  isExitButtonPressed: isExitButtonPressed))
+                  isExitButtonPressed: isExitButtonPressed)),
+          // Add an IconButton at the bottom right to show game information
+          Positioned(
+            bottom: 3.0,
+            right: 3.0,
+            child: IconButton(
+              icon: Icon(Icons.info),
+              color: Colors.grey[300],
+              iconSize: 46.5,
+              onPressed: () {
+                // Call the function to show the game information dialog
+                showGameInfoDialog();
+              },
+            ),
+          ),
         ],
       ),
     );

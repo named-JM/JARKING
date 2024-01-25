@@ -28,13 +28,14 @@ class _DeveloperCardState extends State<DeveloperCard> {
     ),
     Developer(
       'Carl Balano',
-      'Game Application Developer',
-      'Assets/images/profile-img/carl_image.jpg',
+      'Mobile Application Developer',
+      'Assets/images/profile-img/carl-image.jpg',
       education: '3rd Year Computer Science Major',
       skills: [
         'Flutter',
         'Java',
         'C',
+        'Python',
         'HTML',
         'CSS',
         'JS',
@@ -43,23 +44,23 @@ class _DeveloperCardState extends State<DeveloperCard> {
         'MS Office'
       ],
     ),
-    Developer(
-      'King Martinez',
-      'IT Assistant',
-      'Assets/images/profile-img/king_image.jpg',
-      //age: 25,
-      education: '3rd Year Computer Science Major',
-      skills: [
-        'Flutter',
-        'Java',
-        'C',
-        'HTML',
-        'CSS',
-        'JS',
-        'Excel',
-        'Hardware'
-      ],
-    ),
+    // Developer(
+    //   'King Martinez',
+    //   'IT Assistant',
+    //   'Assets/images/profile-img/king_image.jpg',
+    //   //age: 25,
+    //   education: '3rd Year Computer Science Major',
+    //   skills: [
+    //     'Flutter',
+    //     'Java',
+    //     'C',
+    //     'HTML',
+    //     'CSS',
+    //     'JS',
+    //     'Excel',
+    //     'Hardware'
+    //   ],
+    // ),
     // Add more developers as needed
   ];
 

@@ -1,7 +1,5 @@
-import 'package:final_project_for_flutter_by_jarling/categories/Apps/BMI.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/Apps/Calculator.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/Apps/RNG.dart';
-import 'package:final_project_for_flutter_by_jarling/categories/Apps/SPW.dart';
 import 'package:flutter/material.dart';
 
 class AppsMenu extends StatelessWidget {
@@ -50,16 +48,6 @@ class AppsMenu extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => BMI()));
-                      },
-                      child: Center(
-                          child: RoundedBox(
-                        label: 'YOUR BMI',
-                      )),
-                    ),
-                    GestureDetector(
-                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -73,15 +61,6 @@ class AppsMenu extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SpinWheel()));
-                      },
-                      child: Center(child: RoundedBox(label: 'SPIN THE WHEEL')),
-                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(

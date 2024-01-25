@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class ExitButton extends StatelessWidget {
@@ -30,7 +32,7 @@ class ExitButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
             color: isExitButtonPressed ? Colors.red[100] : Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(50),
             boxShadow: isExitButtonPressed
                 ? [
                     //no shadows if button pressed
