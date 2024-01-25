@@ -12,7 +12,7 @@ class _DeveloperCardState extends State<DeveloperCard> {
   final List<Developer> developers = [
     Developer(
       'Joanna Caguco',
-      'Project Manager & UI Designer\nApplication Developer',
+      'Mobile Application Developer & UI Designer',
       'Assets/images/profile-img/joanna_image.jpg',
       education: '3rd Year Computer Science Major',
       skills: [
