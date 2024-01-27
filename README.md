@@ -11,22 +11,23 @@ This is the final flutter project which we will create 10 programs (maybe games)
 We are going to make a Splash Art Screen, Login page & Register Page (and we will challenge and make a database to it.),
 Welcome Screen, Bottom Nav Bar, and Home Menu Screen that will display the 10 programs thumbnails and after clicking will start the program.  
 
-CATEGORIES
-
-A. GAMES
-    1. ROCK PAPER SCISSORS (JACK N POI!)
-    2. DICE ROLL GUESSING
-    3. WORDLE CLONE
-    4. COLOR GAMBLING GAME
-B. APPS
-    1. CALCULATOR
-    2. RNG (RANDOM NAME GENERATOR) 
-C. CRUD
-    1. SIMPLE ALBUM CRUD
-D. MUSIC
-    1. GENSHIN LYRE SIMULATION
-    2. XLOPHONE
-
+# CATEGORIES
+<br>
+# A. GAMES <br>
+    1. ROCK PAPER SCISSORS (JACK N POI!)<br>
+    2. DICE ROLL GUESSING<br>
+    3. WORDLE CLONE<br>
+    4. COLOR GAMBLING GAME<br>
+    <br>
+# B. APPS<br>
+    1. CALCULATOR<br>
+    2. RNG (RANDOM NAME GENERATOR)<br><br> 
+# C. CRUD<br>
+    1. SIMPLE ALBUM CRUD<br><br>
+# D. MUSIC<br>
+    1. GENSHIN LYRE SIMULATION<br>
+    2. XLOPHONE<br><br>
+<br>
 BUSINESS CARD.
   
 
