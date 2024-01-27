@@ -1,10 +1,13 @@
 import 'package:final_project_for_flutter_by_jarling/User_Auth/firebase_auth_services.dart';
+import 'package:final_project_for_flutter_by_jarling/User_Auth/forgot_password.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/form_container_widget.dart';
 import 'package:final_project_for_flutter_by_jarling/User_Auth/signup.dart';
 import 'package:final_project_for_flutter_by_jarling/global/common/toast.dart';
 import 'package:final_project_for_flutter_by_jarling/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,6 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //auth instance
   final FirebaseAuthService _auth = FirebaseAuthService();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -65,6 +69,21 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: "Password",
                   isPasswordField: true,
                 ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgotPasswordPage()));
+                      },
+                      child: Text('Forgot Password?'),
+                    )
+                  ],
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -81,6 +100,40 @@ class _LoginPageState extends State<LoginPage> {
                         "Login",
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 10),
+                //--->SIGN IN WITH GOOGLE BUTTON
+                GestureDetector(
+                  onTap: () {
+                    _signInWithGoogle();
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.google,
+                            color: Colors.white,
+                            size: 21.5,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            "Sign in with Google",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -134,7 +187,33 @@ class _LoginPageState extends State<LoginPage> {
           MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
     } else {
-      showToast(message: "check your credentials.");
+      showToast(
+          message:
+              "Email or Password incorrect. Please Check Your Credentials.");
+    }
+  }
+
+  _signInWithGoogle() async {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
+        );
+        await _firebaseAuth.signInWithCredential(credential);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    } catch (e) {
+      showToast(message: "some error occured $e");
     }
   }
 }
