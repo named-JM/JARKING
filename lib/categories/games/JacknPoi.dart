@@ -62,7 +62,8 @@ class _RPSHomePageState extends State<RPSGame>
         ),
       );
     }
-
+/*A general-purpose widget for building animations.
+AnimatedBuilder is useful for more complex widgets that wish to include an animation as part of a larger build function. To use  */
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
@@ -104,6 +105,7 @@ class _RPSHomePageState extends State<RPSGame>
       appScore++;
     }
 
+//-----DISPLAY SCORE-------
     if (userScore == 5 || appScore == 5) {
       if (userScore == 5) {
         result = 'Congratulations! You won the game!';
@@ -125,6 +127,7 @@ class _RPSHomePageState extends State<RPSGame>
     });
   }
 
+//-----scoring stars adding --------
   Widget getScoreWidget(int score, String label) {
     return Column(
       children: [

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/ColorGame/welcomePage.dart';
 import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/rps.dart';
+import 'package:final_project_for_flutter_by_jarling/categories/games/welcome_screens/wordle.dart';
 import 'package:final_project_for_flutter_by_jarling/developerCards.dart';
 import 'package:final_project_for_flutter_by_jarling/global/common/developerbutton.dart';
 import 'package:final_project_for_flutter_by_jarling/menu.dart';
@@ -206,19 +207,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'See more works in our Categories!',
+                                'CHECK OUT OUR CREATIONS!',
                                 style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                    fontSize: 30,
+                                    fontFamily: 'Olga',
+                                    color: Colors.black87),
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(height: 20),
-                              Icon(
-                                Icons.arrow_downward,
-                                size: 30,
-                                color: Colors.black,
-                              ),
+                              // Icon(
+                              //   Icons.arrow_downward,
+                              //   size: 30,
+                              //   color: Colors.black,
+                              // ),
                             ],
                           ),
                         ),
@@ -257,11 +258,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => GamesMenu()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WelcomeWordle()));
                     },
                     child: Image.asset(
-                      'Assets/images/img-carousel/3.png',
+                      'Assets/images/img-carousel/wordle.png',
                       fit: BoxFit.cover,
                       height: 200.0,
                     ),

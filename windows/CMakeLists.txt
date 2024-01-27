@@ -4,7 +4,7 @@ project(final_project_for_flutter_by_jarling LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "final_project_for_flutter_by_jarling")
+set(BINARY_NAME "JARKING")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
