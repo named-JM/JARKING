@@ -10,6 +10,7 @@ This is the final flutter project which we will create 10 programs (maybe games)
 
 We are going to make a Splash Art Screen, Login page & Register Page (and we will challenge and make a database to it.),
 Welcome Screen, Bottom Nav Bar, and Home Menu Screen that will display the 10 programs thumbnails and after clicking will start the program.  
+I created the designs in Figma and made it on Flutter Framework! 
 
 # CATEGORIES
 <br>
